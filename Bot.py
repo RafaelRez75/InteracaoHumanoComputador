@@ -21,12 +21,12 @@ def condicoes(chatID, msg):
                         reply_markup=InlineKeyboardMarkup(
                             inline_keyboard=[
                                 [InlineKeyboardButton(text="Análise e Desenvolvimento de Sistemas", callback_data='ADS')],
-                                [InlineKeyboardButton(text="Automação e Manufatura Digital", callback_data='ATM')],
-                                [InlineKeyboardButton(text="Banco de Dados", callback_data='BD')],
-                                [InlineKeyboardButton(text="Gestão da Produção Industrial", callback_data='GPI')],
-                                [InlineKeyboardButton(text="Gestão Empresarial", callback_data='GE')],
-                                [InlineKeyboardButton(text="Logística", callback_data='LOG')],
-                                [InlineKeyboardButton(text="Manutenção de Aeronaves", callback_data='MA')],
+                                #[InlineKeyboardButton(text="Automação e Manufatura Digital", callback_data='ATM')],
+                                #[InlineKeyboardButton(text="Banco de Dados", callback_data='BD')],
+                                #[InlineKeyboardButton(text="Gestão da Produção Industrial", callback_data='GPI')],
+                                #[InlineKeyboardButton(text="Gestão Empresarial", callback_data='GE')],
+                                #[InlineKeyboardButton(text="Logística", callback_data='LOG')],
+                                #[InlineKeyboardButton(text="Manutenção de Aeronaves", callback_data='MA')],
                                 [InlineKeyboardButton(text="Projetos de Estruturas Aeronáuticas", callback_data='PEA')]
                             ]
                         )
@@ -493,62 +493,24 @@ def condicoes(chatID, msg):
 ##########################################################################################################
 
 ########################### COMO SER ALUNO
-            elif (msg == 'Como ser Aluno'):
-                    keyboard=ReplyKeyboardMarkup(
+            elif (msg == 'Calendário'):
+                bot.sendMessage(chatID, "Enviando calendário...")
+                doc = open ("Calendário/calendario_2019-1.pdf",'rb')
+                bot.sendDocument(chatID, doc)
+                doc.close()
+                keyboard=ReplyKeyboardMarkup(
                         keyboard=[
                             [
-                                KeyboardButton(text="Como se Inscrever"),
-                                KeyboardButton(text="Provas Anteriores"),
-                                KeyboardButton(text="Vestibular"),
+                                #KeyboardButton(text="Calendário"),
                                 KeyboardButton(text="Voltar")
                             ]
                         ],resize_keyboard=True
                     )
-                    bot.sendMessage(chatID,"Todas as informações mais relevantes sobre a como se tornar aluno estão aqui...", reply_markup=keyboard)
+                bot.sendMessage(chatID,"O seu calendário estudantil está pronto...", reply_markup=keyboard)
 
-            elif(msg == 'Como se Inscrever'):
-                    txt = open('ComoSerAluno/Textos/comoSeInscrever.md','r')	#Abre o arquivo comoSeInscrever.md com o atributo leitura
-                    bot.sendMessage(chatID,txt.read(),'Markdown')	#Envia mensagem com o conteúdo do arquivo 'txt'
-                    txt.close()	#Fecha o arquivo
+          #  elif(msg == 'Calendário'):
+                  
 
-                    bot.sendMessage(chatID, "Enviando Manual do candidato...")
-                    doc = open ("ComoSerAluno/manualCandidato.pdf",'rb')
-                    bot.sendDocument(chatID, doc)
-                    doc.close()
-
-            elif(msg == 'Provas Anteriores'):
-                    bot.sendMessage(chatID, "Enviando Prova do 1 semestre de 2017...")
-                    doc = open ("ComoSerAluno/1semestre2017-PROVA.pdf",'rb')
-                    bot.sendDocument(chatID, doc)
-                    doc.close()
-
-                    bot.sendMessage(chatID, "Enviando gabarito do 1 semestre de 2017...")
-                    doc = open ("ComoSerAluno/1semestre2017-GABARITO.pdf",'rb')
-                    bot.sendDocument(chatID, doc)
-                    doc.close()
-
-                    bot.sendMessage(chatID, "Enviando Prova do 2 semestre de 2017...")
-                    doc = open ("ComoSerAluno/2semestre2017-PROVA.pdf",'rb')
-                    bot.sendDocument(chatID, doc)
-                    doc.close()
-
-                    bot.sendMessage(chatID, "Enviando gabarito do 2 semestre de 2017...")
-                    doc = open ("ComoSerAluno/2semestre2017-GABARITO.pdf",'rb')
-                    bot.sendDocument(chatID, doc)
-                    doc.close()
-
-            elif(msg == 'Vestibular'):
-                    txtHelp = open('ComoSerAluno/Textos/vestibular.md','r')	#Abre o arquivo Hellovestibular.md com o atributo leitura
-                    bot.sendMessage(chatID,txtHelp.read(),'Markdown')	#Envia mensagem com o conteúdo do arquivo 'txtHelp.txt'
-                    txtHelp.close()	#Fecha o arquivo
-
-                    bot.sendMessage(chatID,'''Geralmente o vestibular ocorre nas escolas Estevam Ferri(Endereço: R. Cantídio Miragaia, 100 - Monte Castelo, São José dos Campos - SP, 12215-110)\nMarechal Rondon (Endereço: Praça Francisco Escobar, 165 - Monte Castelo, São José dos Campos - SP, 12215-170)\nambas em São José dos Campos''')
-
-                    bot.sendMessage(chatID,"Enviando a localização da escola Estevam Ferri ...")
-                    bot.sendLocation(chatID, -23.1829646,-45.8747777)
-
-                    bot.sendMessage(chatID,"Enviando a localização da escola Marechal Rondon...")
-                    bot.sendLocation(chatID, -23.183795, -45.874392)
 
 ########################### COMO CHEGAR
             elif (msg == 'Como Chegar'):
@@ -854,7 +816,7 @@ def inicio(chatID, bot):
             keyboard=ReplyKeyboardMarkup(
                         keyboard=[
                             [
-                                KeyboardButton(text="Como ser Aluno"),
+                                KeyboardButton(text="Calendário"),
                                 KeyboardButton(text="Como Chegar"),
                                 KeyboardButton(text="Horário"),
                                 KeyboardButton(text="Sobre a Fatec"),
